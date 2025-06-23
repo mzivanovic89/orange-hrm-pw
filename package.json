@@ -1,0 +1,10 @@
+{
+  "name": "orange-hrm-pw",
+  "version": "1.0.0",
+  "scripts": {},
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.53.1",
+    "@types/node": "^24.0.3"
+  }
+}
