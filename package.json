@@ -1,11 +1,15 @@
 {
   "name": "orange-hrm-pw",
   "version": "1.0.0",
-  "scripts": {},
+  "scripts": {
+    "format:check": "prettier --check --ignore-unknown --ignore-path .gitignore .",
+    "format:fix": "prettier --write --ignore-unknown --ignore-path .gitignore ."
+  },
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.53.1",
-    "@types/node": "^24.0.3"
+    "@types/node": "^24.0.3",
+    "prettier": "^3.6.0"
   },
   "dependencies": {
     "dotenv": "^16.5.0"
