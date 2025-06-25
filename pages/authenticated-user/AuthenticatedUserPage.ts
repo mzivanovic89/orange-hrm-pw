@@ -8,6 +8,9 @@ export default abstract class AuthenticatedUserPage {
   constructor(page: Page) {
     this.page = page;
 
-    this.headingLabel = this.page.locator('h6');
+    this.headingLabel = this.page
+      .locator('h6')
+      .first()
+      .describe('Page heading');
   }
 }

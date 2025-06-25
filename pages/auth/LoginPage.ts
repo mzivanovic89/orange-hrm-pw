@@ -25,21 +25,27 @@ export default class LoginPage {
     this.usernameInput = this.page
       .getByPlaceholder('Username')
       .describe('Username input field');
-    this.usernameError = this.page.locator(
-      'div:has(input[placeholder="Username"]) > span.oxd-input-field-error-message'
-    );
+    this.usernameError = this.page
+      .locator(
+        'div:has(input[placeholder="Username"]) > span.oxd-input-field-error-message'
+      )
+      .describe('Username required error');
     this.passwordInput = this.page
       .getByPlaceholder('Password')
       .describe('Password input field');
-    this.passwordError = this.page.locator(
-      'div:has(input[placeholder="Password"]) > span.oxd-input-field-error-message'
-    );
+    this.passwordError = this.page
+      .locator(
+        'div:has(input[placeholder="Password"]) > span.oxd-input-field-error-message'
+      )
+      .describe('Password required error');
 
     this.loginButton = this.page
       .getByRole('button', { name: 'Login' })
       .describe('Login button');
 
-    this.errorAlert = this.page.getByRole('alert');
+    this.errorAlert = this.page
+      .getByRole('alert')
+      .describe('Invalid credentials error');
   }
 
   async login(data?: { username?: string; password?: string }) {

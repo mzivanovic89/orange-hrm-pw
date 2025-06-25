@@ -8,4 +8,5 @@ export enum Tag {
   SMOKE = '@smoke',
 
   AUTH = '@auth',
+  ADMIN_USER_MANAGEMENT = '@admin-user-management',
 }

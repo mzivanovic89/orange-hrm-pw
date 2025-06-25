@@ -1,8 +1,10 @@
 import { test as base } from '@playwright/test';
-import Pages from './Pages';
+import { Actions } from 'fixtures/Actions';
+import Pages from 'fixtures/Pages';
 
 interface BaseFixtures {
   pages: Pages;
+  actions: Actions;
 }
 
 export const test = base.extend<BaseFixtures>({
@@ -13,6 +15,13 @@ export const test = base.extend<BaseFixtures>({
    */
   pages: async ({ page }, use) => {
     await use(new Pages(page));
+  },
+  /**
+   * Actions fixture encapsulates repeated user workflows that span across multiple
+   * pages.
+   */
+  actions: async ({ page }, use) => {
+    await use(new Actions(page));
   },
 });
 
