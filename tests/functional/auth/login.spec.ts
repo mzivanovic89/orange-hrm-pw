@@ -6,6 +6,7 @@ import {
 import { test, expect } from 'base/test';
 import LoginPage from 'pages/auth/LoginPage';
 import DashboardPage from 'pages/authenticated-user/DashboardPage';
+import { config } from 'project.config';
 import { Tag } from 'types/project/Tag';
 
 test.describe('Login tests', () => {
@@ -31,7 +32,7 @@ test.describe('Login tests', () => {
 
         await expect
           .soft(pages.dashboardPage().headingLabel)
-          .toHaveText('Dashboard');
+          .toHaveText(DashboardPage.HEADING_TEXT);
         await expect.soft(page).toHaveURL(DashboardPage.URL);
       });
     }
@@ -41,10 +42,7 @@ test.describe('Login tests', () => {
     'Logged in user is redirected to dashboard when visiting base url',
     { tag: [Tag.ALL, Tag.FUNCTIONAL, Tag.AUTH] },
     async ({ pages, page }) => {
-      await pages.loginPage().login({
-        username: process.env.ADMIN_USERNAME,
-        password: process.env.ADMIN_PASSWORD,
-      });
+      await pages.loginPage().login(config.adminCredentials);
 
       await page.goto('/');
 
