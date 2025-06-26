@@ -4,4 +4,6 @@ export const config = {
     password: process.env.ADMIN_PASSWORD,
   },
   automationPrefix: process.env.AUTOMATION_PREFIX,
+  downloadDirectory: 'resources/downloads/',
+  fileHashingAlgorithm: 'sha256',
 };

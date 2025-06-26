@@ -1,6 +1,6 @@
 import { type Locator, type Page } from '@playwright/test';
 
-export default class ConfirmDeleteUserModal {
+export default class ConfirmDeleteModal {
   readonly page: Page;
 
   readonly yesButton: Locator;

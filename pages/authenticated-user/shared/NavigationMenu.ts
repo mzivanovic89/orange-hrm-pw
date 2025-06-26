@@ -5,6 +5,7 @@ export default class NavigationMenu {
 
   readonly adminLink: Locator;
   readonly pimLink: Locator;
+  readonly myInfoLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,5 +16,8 @@ export default class NavigationMenu {
     this.pimLink = this.page
       .getByRole('link', { name: 'PIM' })
       .describe('Navigation menu: PIM link');
+    this.myInfoLink = this.page
+      .getByRole('link', { name: 'My Info' })
+      .describe('Navigation menu: My info link');
   }
 }

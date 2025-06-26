@@ -10,9 +10,6 @@ export default class StringUtils {
    *
    * @param {string} text - The input string whose character cases will be reversed.
    * @returns {string} A new string with each character's case inverted.
-   *
-   * @example
-   * reverseCase('Hi!'); // returns 'hI!'
    */
   static reverseCase(text: string): string {
     let reversedCase = [];

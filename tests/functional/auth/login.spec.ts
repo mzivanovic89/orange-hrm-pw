@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import {
   loginValidationScenarios,
   validLoginScenarios,
-} from 'assets/test-data/auth/login-scenarios';
+} from 'resources/test-data/auth/login-scenarios';
 import { test, expect } from 'base/test';
 import LoginPage from 'pages/auth/LoginPage';
 import DashboardPage from 'pages/authenticated-user/DashboardPage';
@@ -66,7 +66,7 @@ test.describe('Login tests', () => {
         await expect
           .soft(pages.loginPage().usernameError)
           .toHaveText(LoginPage.USERNAME_REQUIRED_ERROR_TEXT);
-        await expect.soft(pages.loginPage().passwordError).not.toBeVisible();
+        await expect.soft(pages.loginPage().passwordError).toBeHidden();
       }
     );
 
@@ -82,7 +82,7 @@ test.describe('Login tests', () => {
         await expect
           .soft(pages.loginPage().passwordError)
           .toHaveText(LoginPage.PASSWORD_REQUIRED_ERROR_TEXT);
-        await expect.soft(pages.loginPage().usernameError).not.toBeVisible();
+        await expect.soft(pages.loginPage().usernameError).toBeHidden();
       }
     );
 

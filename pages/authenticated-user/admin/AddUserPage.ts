@@ -47,7 +47,7 @@ export default class AddUserPage {
   }
 
   async addUser(data?: Partial<User>) {
-    test.step('Add user page: Add user', async () => {
+    await test.step('Add user page: Add user', async () => {
       if (data?.userRole) {
         await this.userRoleSelect.click();
         await this.page.getByRole('listbox').getByText(data.userRole).click();

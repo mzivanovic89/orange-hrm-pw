@@ -4,11 +4,13 @@ import AddUserPage from 'pages/authenticated-user/admin/AddUserPage';
 import EditUserPage from 'pages/authenticated-user/admin/EditUserPage';
 import UserManagementPage from 'pages/authenticated-user/admin/UserManagementPage';
 import DashboardPage from 'pages/authenticated-user/DashboardPage';
-import ConfirmDeleteUserModal from 'pages/authenticated-user/shared/modals/ConfirmDeleteUserModal';
+import ConfirmDeleteModal from 'pages/authenticated-user/shared/modals/ConfirmDeleteModal';
 import AddEmployeePage from 'pages/authenticated-user/pim/AddEmployeePage';
 import PIMPage from 'pages/authenticated-user/pim/PIMPage';
 import NavigationMenu from 'pages/authenticated-user/shared/NavigationMenu';
 import Toast from 'pages/authenticated-user/shared/Toast';
+import PersonalDetailsPage from 'pages/authenticated-user/my-info/PersonalDetailsPage';
+import LoadingSpinner from 'pages/authenticated-user/shared/LoadingSpinner';
 
 export default class Pages {
   private readonly page: Page;
@@ -48,6 +50,11 @@ export default class Pages {
     return new AddEmployeePage(this.page);
   }
 
+  // My info section
+  personalDetailsPage() {
+    return new PersonalDetailsPage(this.page);
+  }
+
   // shared
   navigationMenu() {
     return new NavigationMenu(this.page);
@@ -57,8 +64,12 @@ export default class Pages {
     return new Toast(this.page);
   }
 
+  loadingSpinner() {
+    return new LoadingSpinner(this.page);
+  }
+
   // modals
-  confirmDeleteUserModal() {
-    return new ConfirmDeleteUserModal(this.page);
+  confirmDeleteModal() {
+    return new ConfirmDeleteModal(this.page);
   }
 }

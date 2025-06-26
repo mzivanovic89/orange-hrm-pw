@@ -26,16 +26,19 @@ export class Actions {
    */
   async createEmployee(args?: {
     data?: Partial<Employee>;
-    options?: { waitForSuccessToast: boolean };
+    options?: { waitForSuccessToast?: boolean };
   }): Promise<Employee> {
-    const employee = { ...Generate.employee(), ...args.data };
+    const employee = { ...Generate.employee(), ...args?.data };
     console.log('employee:', employee);
 
-    const waitForToast = args.options?.waitForSuccessToast ?? true;
+    const waitForToast = args?.options?.waitForSuccessToast ?? true;
 
     await test.step('Action: Create employee', async () => {
       await this.pages.navigationMenu().pimLink.click();
       await this.pages.pimPage().addEmployeeButton.click();
+
+      // wait for add employee form to load
+      await this.pages.loadingSpinner().waitForLoadToComplete();
 
       await this.pages.addEmployeePage().addEmployee(employee);
 
@@ -60,9 +63,9 @@ export class Actions {
   async createUser(args: {
     employee: Employee;
     data?: Partial<User>;
-    options?: { waitForSuccessToast: boolean };
+    options?: { waitForSuccessToast?: boolean };
   }): Promise<User> {
-    const user = { ...Generate.user(args.employee), ...args.data };
+    const user = { ...Generate.user(args.employee), ...args?.data };
     console.log('user:', user);
 
     const waitForToast = args?.options?.waitForSuccessToast ?? true;
@@ -79,5 +82,28 @@ export class Actions {
     });
 
     return user;
+  }
+
+  async addPersonalAttachment(args: {
+    data?: {
+      file?: string;
+      comment?: string;
+    };
+    options?: { waitForSuccessToast?: boolean };
+  }) {
+    const waitForToast = args?.options?.waitForSuccessToast ?? true;
+
+    await test.step('Action: Add personal attachment', async () => {
+      await this.pages.navigationMenu().myInfoLink.click();
+
+      await this.pages.personalDetailsPage().addAttachment({
+        file: args.data?.file,
+        comment: args.data?.comment,
+      });
+
+      if (waitForToast) {
+        await this.pages.toast().success.waitFor();
+      }
+    });
   }
 }

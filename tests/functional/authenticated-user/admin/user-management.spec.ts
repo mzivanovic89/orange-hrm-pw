@@ -15,10 +15,7 @@ test.describe('User management tests', () => {
     { tag: [Tag.ALL, Tag.FUNCTIONAL, Tag.ADMIN_USER_MANAGEMENT, Tag.SMOKE] },
     async ({ pages, actions }) => {
       const employee = await actions.createEmployee();
-      const user = await actions.createUser({
-        employee,
-        options: { waitForSuccessToast: true },
-      });
+      const user = await actions.createUser({ employee });
 
       // verify user is visible in the user table
       const tableData = await pages
@@ -39,10 +36,7 @@ test.describe('User management tests', () => {
     { tag: [Tag.ALL, Tag.FUNCTIONAL, Tag.ADMIN_USER_MANAGEMENT, Tag.SMOKE] },
     async ({ actions, pages }) => {
       const employee = await actions.createEmployee();
-      const user = await actions.createUser({
-        employee,
-        options: { waitForSuccessToast: true },
-      });
+      const user = await actions.createUser({ employee });
 
       await pages.userManagementPage().clickEditUserButton(user.username);
 
@@ -79,13 +73,10 @@ test.describe('User management tests', () => {
     { tag: [Tag.ALL, Tag.FUNCTIONAL, Tag.ADMIN_USER_MANAGEMENT, Tag.SMOKE] },
     async ({ actions, pages }) => {
       const employee = await actions.createEmployee();
-      const user = await actions.createUser({
-        employee,
-        options: { waitForSuccessToast: true },
-      });
+      const user = await actions.createUser({ employee });
 
       await pages.userManagementPage().clickDeleteUserButton(user.username);
-      await pages.confirmDeleteUserModal().yesButton.click();
+      await pages.confirmDeleteModal().yesButton.click();
 
       // verify the user is no longer present in user table
       const removedUserLocator = pages

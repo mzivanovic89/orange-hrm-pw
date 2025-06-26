@@ -37,7 +37,7 @@ export default class EditUserPage {
   }
 
   async editUser(data?: Partial<User>) {
-    test.step('Edit user page: Edit user', async () => {
+    await test.step('Edit user page: Edit user', async () => {
       if (
         data?.userRole &&
         data.userRole !== (await this.userRoleSelect.innerText())

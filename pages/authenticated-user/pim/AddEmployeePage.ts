@@ -36,11 +36,7 @@ export default class AddEmployeePage {
   }
 
   async addEmployee(data?: Partial<Employee>) {
-    test.step('Add employee page: Add employee', async () => {
-      // wait for form to load
-      this.page.locator('.oxd-loading-spinner').waitFor({ state: 'visible' });
-      this.page.locator('.oxd-loading-spinner').waitFor({ state: 'hidden' });
-
+    await test.step('Add employee page: Add employee', async () => {
       if (data?.firstName) {
         await this.firstNameInput.fill(data.firstName);
       }
