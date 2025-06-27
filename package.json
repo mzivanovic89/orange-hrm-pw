@@ -12,6 +12,7 @@
     "@playwright/test": "^1.53.1",
     "@types/luxon": "^3.6.2",
     "@types/node": "^24.0.3",
+    "allure-playwright": "^3.3.0",
     "luxon": "^3.6.1",
     "prettier": "^3.6.0"
   },

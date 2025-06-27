@@ -1,14 +1,14 @@
 import { test } from 'base/test';
 import { config } from 'project.config';
 
-test.describe('Teardown', () => {
+test.describe('Cleanup', () => {
   test.beforeEach(async ({ page, pages }) => {
     await page.goto('/');
 
     await pages.loginPage().login(config.adminCredentials);
   });
 
-  test('Cleanup: Employees', async ({ pages }) => {
+  test.only('Cleanup: Employees', async ({ pages, page }) => {
     await pages.navigationMenu().pimLink.click();
 
     // Wait for results to load before applying filters
@@ -16,10 +16,10 @@ test.describe('Teardown', () => {
 
     await pages.pimPage().search({ employeeName: config.automationPrefix });
 
-    if (
-      (await pages.pimPage().noRecordsFoundLabel.isHidden()) &&
-      (await pages.loadingSpinner().spinner.isHidden())
-    ) {
+    // wait for attachments to load
+    await pages.loadingSpinner().waitForLoadToComplete();
+
+    if (await pages.pimPage().noRecordsFoundLabel.isHidden()) {
       await pages.pimPage().selectAllRowsCheckbox.check();
       await pages.pimPage().deleteSelectedButton.click();
 
