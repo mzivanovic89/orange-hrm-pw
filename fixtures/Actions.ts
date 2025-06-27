@@ -4,6 +4,7 @@ import Generate from 'util/Generate';
 import Pages from './Pages';
 import { type Employee } from 'types/entities/Employee';
 import { type User } from 'types/entities/User';
+import { Vacancy } from 'types/entities/Vacancy';
 
 export class Actions {
   readonly page: Page;
@@ -36,9 +37,6 @@ export class Actions {
     await test.step('Action: Create employee', async () => {
       await this.pages.navigationMenu().pimLink.click();
       await this.pages.pimPage().addEmployeeButton.click();
-
-      // wait for add employee form to load
-      await this.pages.loadingSpinner().waitForLoadToComplete();
 
       await this.pages.addEmployeePage().addEmployee(employee);
 
@@ -105,5 +103,25 @@ export class Actions {
         await this.pages.toast().success.waitFor();
       }
     });
+  }
+
+  async createVacancy(args: {
+    hiringManager: Employee;
+    data?: Partial<Vacancy>;
+  }) {
+    const vacancy = { ...Generate.vacancy(args.hiringManager), ...args?.data };
+    console.log('vacancy:', vacancy);
+
+    await test.step('Action: Create vacancy', async () => {
+      await this.pages.navigationMenu().recruitmentLink.click();
+      await this.pages.recruitmentPage().vacanciesLink.click();
+      await this.pages.vacanciesPage().addVacancyButton.click();
+
+      await this.pages.addVacancyPage().addVacancy(vacancy);
+
+      await this.page.waitForURL('**\/addJobVacancy\/*');
+    });
+
+    return vacancy;
   }
 }

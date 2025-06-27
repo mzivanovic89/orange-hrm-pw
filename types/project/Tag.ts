@@ -11,5 +11,6 @@ export enum Tag {
   // sections
   AUTH = '@auth',
   ADMIN_USER_MANAGEMENT = '@admin-user-management',
-  MY_INFO = '@my-info',
+  RECRUITMENT_VACANCIES = '@recruitment-vacancies',
+  MY_INFO_PERSONAL_DETAILS = '@my-info',
 }

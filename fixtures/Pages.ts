@@ -11,6 +11,9 @@ import NavigationMenu from 'pages/authenticated-user/shared/NavigationMenu';
 import Toast from 'pages/authenticated-user/shared/Toast';
 import PersonalDetailsPage from 'pages/authenticated-user/my-info/PersonalDetailsPage';
 import LoadingSpinner from 'pages/authenticated-user/shared/LoadingSpinner';
+import RecruitmentPage from 'pages/authenticated-user/recruitment/RecruitmentPage';
+import VacanciesPage from 'pages/authenticated-user/recruitment/VacanciesPage';
+import AddVacancyPage from 'pages/authenticated-user/recruitment/AddVacancyPage';
 
 export default class Pages {
   private readonly page: Page;
@@ -48,6 +51,19 @@ export default class Pages {
 
   addEmployeePage() {
     return new AddEmployeePage(this.page);
+  }
+
+  // Recruitment section
+  recruitmentPage() {
+    return new RecruitmentPage(this.page);
+  }
+
+  vacanciesPage() {
+    return new VacanciesPage(this.page);
+  }
+
+  addVacancyPage() {
+    return new AddVacancyPage(this.page);
   }
 
   // My info section

@@ -17,7 +17,7 @@ test.describe('Attachment tests', () => {
 
   test(
     'Add attachment',
-    { tag: [Tag.ALL, Tag.FUNCTIONAL, Tag.SMOKE, Tag.MY_INFO] },
+    { tag: [Tag.ALL, Tag.FUNCTIONAL, Tag.SMOKE, Tag.MY_INFO_PERSONAL_DETAILS] },
     async ({ actions, pages }) => {
       const comment = `${config.automationPrefix}${faker.string.alphanumeric({ length: 10 })}`;
 
@@ -42,7 +42,7 @@ test.describe('Attachment tests', () => {
 
   test(
     'Download attachment',
-    { tag: [Tag.ALL, Tag.FUNCTIONAL, Tag.SMOKE, Tag.MY_INFO] },
+    { tag: [Tag.ALL, Tag.FUNCTIONAL, Tag.SMOKE, Tag.MY_INFO_PERSONAL_DETAILS] },
     async ({ actions, page, pages }) => {
       const comment = `${config.automationPrefix}${faker.string.alphanumeric({ length: 10 })}`;
 
@@ -72,7 +72,7 @@ test.describe('Attachment tests', () => {
 
   test(
     'Delete attachment',
-    { tag: [Tag.ALL, Tag.FUNCTIONAL, Tag.SMOKE, Tag.MY_INFO] },
+    { tag: [Tag.ALL, Tag.FUNCTIONAL, Tag.SMOKE, Tag.MY_INFO_PERSONAL_DETAILS] },
     async ({ actions, pages, page }) => {
       const comment =
         config.automationPrefix + faker.string.alphanumeric({ length: 10 });

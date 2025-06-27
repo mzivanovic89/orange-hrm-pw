@@ -26,4 +26,18 @@ export default class StringUtils {
 
     return reversedCase.join('');
   }
+
+  /**
+   * Removes the middle name if the full name contains it.
+   * If the name has two or any other number of words, it returns the original name unchanged.
+   *
+   * @param {string} fullName - The full name string (e.g., "John Michael Doe").
+   * @returns {string} The name with the middle word removed if there are exactly three words,
+   *                   otherwise the original full name.
+   */
+  static removeMiddleName(fullName: string): string {
+    const names = fullName.trim().split(' ');
+
+    return names.length === 3 ? `${names[0]} ${names[2]}` : fullName;
+  }
 }

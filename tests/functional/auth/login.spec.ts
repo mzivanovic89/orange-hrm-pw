@@ -1,13 +1,10 @@
 import { faker } from '@faker-js/faker';
-import {
-  loginValidationScenarios,
-  validLoginScenarios,
-} from 'resources/test-data/auth/login-scenarios';
 import { test, expect } from 'base/test';
 import LoginPage from 'pages/auth/LoginPage';
 import DashboardPage from 'pages/authenticated-user/DashboardPage';
 import { config } from 'project.config';
 import { Tag } from 'types/project/Tag';
+import { loginValidationScenarios, validLoginScenarios } from './login.scenarios';
 
 test.describe('Login tests', () => {
   test.beforeEach(async ({ page }) => {

@@ -14,7 +14,12 @@ export default class LoadingSpinner {
 
   async waitForLoadToComplete() {
     await test.step('Loading spinner: Wait for load to complete', async () => {
-      await this.spinner.waitFor({ state: 'visible' });
+      // Sometimes the data loads instantly so playwright doesn't catch the spinner.
+      // In those cases we don't want an exception.
+      try {
+        await this.spinner.waitFor({ state: 'visible', timeout: 5_000 });
+      } catch {}
+
       await this.spinner.waitFor({ state: 'hidden' });
     });
   }
