@@ -5,7 +5,7 @@ import { Tag } from 'types/project/Tag';
 import StringUtils from 'util/StringUtils';
 import { filterScenarios } from './vacancies-filters.scenarios';
 
-test.describe.only('Vacancies filters tests', () => {
+test.describe('Vacancies filters tests', () => {
   test.beforeEach(async ({ page, pages }) => {
     await page.goto('/');
 

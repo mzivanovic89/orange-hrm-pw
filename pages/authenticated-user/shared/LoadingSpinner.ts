@@ -17,10 +17,12 @@ export default class LoadingSpinner {
       // Sometimes the data loads instantly so playwright doesn't catch the spinner.
       // In those cases we don't want an exception.
       try {
-        await this.spinner.waitFor({ state: 'visible', timeout: 5_000 });
+        await this.spinner
+          .first()
+          .waitFor({ state: 'visible', timeout: 5_000 });
       } catch {}
 
-      await this.spinner.waitFor({ state: 'hidden' });
+      await this.spinner.first().waitFor({ state: 'hidden' });
     });
   }
 }

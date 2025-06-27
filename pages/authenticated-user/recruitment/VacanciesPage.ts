@@ -13,6 +13,8 @@ export default class VacanciesPage {
 
   readonly addVacancyButton: Locator;
 
+  readonly deleteSelectedButton: Locator;
+
   constructor(page: Page) {
     this.page = page;
 
@@ -40,6 +42,10 @@ export default class VacanciesPage {
     this.addVacancyButton = this.page
       .getByRole('button', { name: 'Add' })
       .describe('Add vacancy button');
+
+    this.deleteSelectedButton = this.page
+      .getByRole('button', { name: 'Delete Selected' })
+      .describe('Delete selected button');
   }
 
   async search(data?: {
@@ -48,28 +54,34 @@ export default class VacanciesPage {
     hiringManager?: string;
     status?: string;
   }) {
-    await test.step('Vacancies page: search', async () => {
+    await test.step('Vacancies page: Search', async () => {
       if (data?.jobTitle) {
         await this.jobTitleSelect.click();
-        await this.page.getByRole('listbox').getByText(data.jobTitle).click();
+        await this.page
+          .getByRole('listbox')
+          .getByText(data.jobTitle, { exact: true })
+          .click();
       }
       if (data?.vacancyName) {
         await this.vacancySelect.click();
         await this.page
           .getByRole('listbox')
-          .getByText(data.vacancyName)
+          .getByText(data.vacancyName, { exact: true })
           .click();
       }
       if (data?.hiringManager) {
         await this.hiringManagerSelect.click();
         await this.page
           .getByRole('listbox')
-          .getByText(data.hiringManager)
+          .getByText(data.hiringManager, { exact: true })
           .click();
       }
       if (data?.status) {
         await this.statusSelect.click();
-        await this.page.getByRole('listbox').getByText(data.status).click();
+        await this.page
+          .getByRole('listbox')
+          .getByText(data.status, { exact: true })
+          .click();
       }
 
       await this.searchButton.click();

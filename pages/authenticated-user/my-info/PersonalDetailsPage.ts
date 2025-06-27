@@ -11,6 +11,8 @@ export default class PersonalDetailsPage extends AuthenticatedUserPage {
 
   readonly saveAttachmentButton: Locator;
 
+  readonly deleteSelectedButton: Locator;
+
   static readonly TABLE_ROW_SELECTOR = '.oxd-table-row';
 
   constructor(page: Page) {
@@ -33,6 +35,10 @@ export default class PersonalDetailsPage extends AuthenticatedUserPage {
     this.saveAttachmentButton = this.attachmentsSection
       .getByRole('button', { name: 'Save' })
       .describe('Save attachment button');
+
+    this.deleteSelectedButton = this.page
+      .getByRole('button', { name: 'Delete Selected' })
+      .describe('Delete selected button');
   }
 
   async addAttachment(data?: { file?: string; comment?: string }) {
