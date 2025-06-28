@@ -13,4 +13,5 @@ export enum Tag {
   ADMIN_USER_MANAGEMENT = '@admin-user-management',
   RECRUITMENT_VACANCIES = '@recruitment-vacancies',
   MY_INFO_PERSONAL_DETAILS = '@my-info',
+  DASHBOARD = '@dashboard',
 }

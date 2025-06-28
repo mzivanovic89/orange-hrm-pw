@@ -3,7 +3,7 @@ import LoginPage from 'pages/auth/LoginPage';
 import AddUserPage from 'pages/authenticated-user/admin/AddUserPage';
 import EditUserPage from 'pages/authenticated-user/admin/EditUserPage';
 import UserManagementPage from 'pages/authenticated-user/admin/UserManagementPage';
-import DashboardPage from 'pages/authenticated-user/DashboardPage';
+import DashboardPage from 'pages/authenticated-user/dashboard/DashboardPage';
 import ConfirmDeleteModal from 'pages/authenticated-user/shared/modals/ConfirmDeleteModal';
 import AddEmployeePage from 'pages/authenticated-user/pim/AddEmployeePage';
 import PIMPage from 'pages/authenticated-user/pim/PIMPage';

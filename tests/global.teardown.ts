@@ -8,7 +8,7 @@ test.describe('Cleanup', () => {
     await pages.loginPage().login(config.adminCredentials);
   });
 
-  test.only('Cleanup: Employees', async ({ pages, page }) => {
+  test('Cleanup: Employees', async ({ pages, page }) => {
     await pages.navigationMenu().pimLink.click();
 
     // Wait for results to load before applying filters

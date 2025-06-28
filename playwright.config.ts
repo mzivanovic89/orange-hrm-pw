@@ -27,7 +27,7 @@ export default defineConfig({
     screenshot: 'only-on-failure',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
-    /* Limit action timeouts to 20 seconds */
+    /* Limit action timeouts to 20 seconds. This is set due to (sometimes) slow nature of Orange HRM web app */
     actionTimeout: 20_000,
   },
   /* Limit test to 90 seconds */
