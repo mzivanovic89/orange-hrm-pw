@@ -1,7 +1,10 @@
-import { type Page } from '@playwright/test';
-import AuthenticatedUserPage from '../AuthenticatedUserPage';
+import { type Locator, type Page } from '@playwright/test';
 
-export default class DashboardPage extends AuthenticatedUserPage {
+export default class DashboardPage {
+  readonly page: Page;
+
+  readonly headingLabel: Locator;
+
   static readonly URL = '/web/index.php/dashboard/index';
   static readonly HEADING_TEXT = 'Dashboard';
 
@@ -9,6 +12,11 @@ export default class DashboardPage extends AuthenticatedUserPage {
     '.oxd-sheet.orangehrm-dashboard-widget';
 
   constructor(page: Page) {
-    super(page);
+    this.page = page;
+
+    this.headingLabel = this.page
+      .locator('h6')
+      .first()
+      .describe('Page heading');
   }
 }

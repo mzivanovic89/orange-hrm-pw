@@ -1,7 +1,8 @@
 import { test, expect } from 'base/test';
 import { config } from 'project.config';
-import { UserRole, UserStatus } from 'types/entities/User';
-import { Tag } from 'types/project/Tag';
+import { Tag } from 'types/enums/Tag';
+import { UserRole } from 'types/enums/UserRole';
+import { UserStatus } from 'types/enums/UserStatus';
 
 test.describe('User management tests', () => {
   test.beforeEach(async ({ page, pages }) => {
@@ -17,7 +18,7 @@ test.describe('User management tests', () => {
       const employee = await actions.createEmployee();
       const user = await actions.createUser({ employee });
 
-      // verify user is visible in the user table
+      // Verify user is visible in the user table
       const tableData = await pages
         .userManagementPage()
         .extractDataFromUserTableForUser(user.username);
@@ -40,7 +41,7 @@ test.describe('User management tests', () => {
 
       await pages.userManagementPage().clickEditUserButton(user.username);
 
-      // create data to update user by inverting `userRole` and `status`
+      // Create data to update user by inverting `userRole` and `status`
       const updatedUserData = {
         userRole:
           user.userRole === UserRole.ADMIN ? UserRole.ESS : UserRole.ADMIN,
@@ -54,7 +55,7 @@ test.describe('User management tests', () => {
 
       await pages.toast().success.waitFor();
 
-      // validate the table now contains updated data
+      // Validate the table now contains updated data
       const tableData = await pages
         .userManagementPage()
         .extractDataFromUserTableForUser(user.username);
@@ -78,7 +79,7 @@ test.describe('User management tests', () => {
       await pages.userManagementPage().clickDeleteUserButton(user.username);
       await pages.confirmDeleteModal().yesButton.click();
 
-      // verify the user is no longer present in user table
+      // Verify the user is no longer present in user table
       const removedUserLocator = pages
         .userManagementPage()
         .getRowForUser(user.username);

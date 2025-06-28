@@ -1,7 +1,7 @@
 import { expect, test } from 'base/test';
 import { config } from 'project.config';
 import { Vacancy } from 'types/entities/Vacancy';
-import { Tag } from 'types/project/Tag';
+import { Tag } from 'types/enums/Tag';
 import StringUtils from 'util/StringUtils';
 import { filterScenarios } from './vacancies-filters.scenarios';
 
@@ -20,7 +20,7 @@ test.describe('Vacancies filters tests', () => {
         const employee = await actions.createEmployee();
         const vacancies: Vacancy[] = [];
 
-        // create vacancies to use for filtering
+        // Create vacancies to use for filtering
         for (let i = 0; i < 2; i++) {
           const vacancy = await actions.createVacancy({
             hiringManager: employee,
@@ -28,7 +28,7 @@ test.describe('Vacancies filters tests', () => {
 
           vacancies.push({
             ...vacancy,
-            // remove middle name (if present) because the results table does not display it
+            // Remove middle name (if present) because the results table does not display it
             hiringManager: StringUtils.removeMiddleName(vacancy.hiringManager),
           });
         }
@@ -40,7 +40,7 @@ test.describe('Vacancies filters tests', () => {
         // before applying filters.
         await pages.loadingSpinner().waitForLoadToComplete();
 
-        // create filter object from array of filters
+        // Create filter object from array of filters: ['jobTitle'] => { jobTitle: vacancies[0].jobTitle }
         const vacancyFilters = scenario.filters.reduce((result, filter) => {
           result[filter] = vacancies[0][filter];
           return result;

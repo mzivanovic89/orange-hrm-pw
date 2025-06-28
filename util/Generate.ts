@@ -1,9 +1,11 @@
 import { faker } from '@faker-js/faker';
 import { config } from 'project.config';
 import { Employee } from 'types/entities/Employee';
-import { User, UserRole, UserStatus } from 'types/entities/User';
+import { User } from 'types/entities/User';
 import { Vacancy } from 'types/entities/Vacancy';
 import { JobTitle } from 'types/enums/JobTitle';
+import { UserRole } from 'types/enums/UserRole';
+import { UserStatus } from 'types/enums/UserStatus';
 import { VacancyStatus } from 'types/enums/VacancyStatus';
 
 /**

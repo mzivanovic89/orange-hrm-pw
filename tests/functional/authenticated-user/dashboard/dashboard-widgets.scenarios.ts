@@ -12,7 +12,7 @@ export const scenarios: WidgetScenario[] = [
   },
   {
     name: 'Employee Distribution by Location',
-    responseUrlRegex: '**/dashboard/employees/location',
+    responseUrlRegex: '**/dashboard/employees/locations',
     entityName: 'location',
   },
 ];

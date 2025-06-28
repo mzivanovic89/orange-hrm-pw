@@ -1,7 +1,7 @@
 import { faker } from '@faker-js/faker';
 import { expect, test } from 'base/test';
 import { config } from 'project.config';
-import { Tag } from 'types/project/Tag';
+import { Tag } from 'types/enums/Tag';
 import FileUtils from 'util/FileUtils';
 import { DateTime } from 'luxon';
 import PersonalDetailsPage from 'pages/authenticated-user/my-info/PersonalDetailsPage';
@@ -50,7 +50,7 @@ test.describe('Attachment tests', () => {
         data: { file: FILE, comment },
       });
 
-      // download the attachment
+      // Download the attachment
       const downloadPromise = page.waitForEvent('download');
 
       await pages.personalDetailsPage().clickAttachmentDownloadButton(comment);
@@ -62,7 +62,7 @@ test.describe('Attachment tests', () => {
 
       await download.saveAs(downloadedFile);
 
-      // verify file name and hash
+      // Verify file name and hash
       expect.soft(download.suggestedFilename()).toBe(FILE.split('/').pop());
       expect
         .soft(FileUtils.getFileHash(downloadedFile))
@@ -84,7 +84,7 @@ test.describe('Attachment tests', () => {
       await pages.personalDetailsPage().clickAttachmentDeleteButton(comment);
       await pages.confirmDeleteModal().yesButton.click();
 
-      // verify there are no rows with file
+      // Verify there are no rows with file
       const expectedRows = page
         .locator(PersonalDetailsPage.TABLE_ROW_SELECTOR)
         .filter({ hasText: FILE.split('/').pop() })

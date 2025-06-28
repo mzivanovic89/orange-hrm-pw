@@ -1,10 +1,10 @@
 import { expect, test } from 'base/test';
 import DashboardPage from 'pages/authenticated-user/dashboard/DashboardPage';
 import { config } from 'project.config';
-import { Tag } from 'types/project/Tag';
+import { Tag } from 'types/enums/Tag';
 import { scenarios } from './dashboard-widgets.scenarios';
 
-test.describe.only('Dashboard widget tests', () => {
+test.describe('Dashboard widget tests', () => {
   for (const scenario of scenarios) {
     test(
       `Verify ${scenario.name} chart legend`,
@@ -16,11 +16,11 @@ test.describe.only('Dashboard widget tests', () => {
 
         await pages.loginPage().login(config.adminCredentials);
 
-        // resolve promise and extract json data
+        // Resolve promise and extract json data
         const response = await responsePromise;
         const responseJson = await response.json();
 
-        // extract label names from response
+        // Extract label names from response
         const expectedLabels = responseJson.data.map(
           (entity) => entity[scenario.entityName].name
         );
@@ -33,13 +33,13 @@ test.describe.only('Dashboard widget tests', () => {
           .locator(DashboardPage.WIDGET_CONTAINER_SELECTOR)
           .filter({ hasText: scenario.name });
 
-        // wait for the chart to load
+        // Wait for the chart to load
         await widgetContainer.locator('canvas').waitFor();
 
-        // extract text from the widget
+        // Extract text from the widget
         const widgetTextRaw = await widgetContainer.innerText();
 
-        // turn into array and remove widget title
+        // Turn into array and remove widget title
         const actualLabels = widgetTextRaw
           .split('\n')
           .filter((text) => text !== scenario.name && text.trim());

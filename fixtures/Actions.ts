@@ -82,13 +82,24 @@ export class Actions {
     return user;
   }
 
+  /**
+   * Adds a personal attachment through the My Info section.
+   *
+   * @param {Object} args - Arguments for the attachment.
+   * @param {Object} [args.data] - The attachment data.
+   * @param {string} [args.data.file] - Path to the file to attach.
+   * @param {string} [args.data.comment] - Optional comment for the attachment.
+   * @param {Object} [args.options] - Optional configuration.
+   * @param {boolean} [args.options.waitForSuccessToast=true] - Whether to wait for the success toast notification.
+   * @returns {Promise<void>} A promise that resolves when the attachment is added.
+   */
   async addPersonalAttachment(args: {
     data?: {
       file?: string;
       comment?: string;
     };
     options?: { waitForSuccessToast?: boolean };
-  }) {
+  }): Promise<void> {
     const waitForToast = args?.options?.waitForSuccessToast ?? true;
 
     await test.step('Action: Add personal attachment', async () => {
@@ -105,10 +116,18 @@ export class Actions {
     });
   }
 
+  /**
+   * Creates a new job vacancy by navigating through the Recruitment section.
+   *
+   * @param {Object} args - Arguments for vacancy creation.
+   * @param {Employee} args.hiringManager - The employee assigned as the hiring manager.
+   * @param {Partial<Vacancy>} [args.data] - Custom data to override the generated vacancy data.
+   * @returns {Promise<Vacancy>} A promise that resolves to the created vacancy object.
+   */
   async createVacancy(args: {
     hiringManager: Employee;
     data?: Partial<Vacancy>;
-  }) {
+  }): Promise<Vacancy> {
     const vacancy = { ...Generate.vacancy(args.hiringManager), ...args?.data };
     console.log('vacancy:', vacancy);
 

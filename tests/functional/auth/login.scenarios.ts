@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { Tag } from 'types/project/Tag';
+import { Tag } from 'types/enums/Tag';
 import StringUtils from 'util/StringUtils';
 
 type LoginScenario = {

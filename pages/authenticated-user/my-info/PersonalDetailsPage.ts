@@ -1,8 +1,9 @@
 import { type Locator, type Page } from '@playwright/test';
-import AuthenticatedUserPage from '../AuthenticatedUserPage';
 import { test } from 'base/test';
 
-export default class PersonalDetailsPage extends AuthenticatedUserPage {
+export default class PersonalDetailsPage {
+  readonly page: Page;
+
   readonly attachmentsSection: Locator;
 
   readonly addAttachmentButton: Locator;
@@ -16,7 +17,7 @@ export default class PersonalDetailsPage extends AuthenticatedUserPage {
   static readonly TABLE_ROW_SELECTOR = '.oxd-table-row';
 
   constructor(page: Page) {
-    super(page);
+    this.page = page;
 
     this.attachmentsSection = this.page
       .locator('div.orangehrm-attachment')

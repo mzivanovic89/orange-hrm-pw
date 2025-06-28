@@ -66,7 +66,7 @@ export default class VacanciesPage {
         await this.vacancySelect.click();
         await this.page
           .getByRole('listbox')
-          .getByText(data.vacancyName, { exact: true })
+          .getByText(data.vacancyName)
           .click();
       }
       if (data?.hiringManager) {

@@ -1,11 +1,12 @@
 import { type Locator, type Page } from '@playwright/test';
-import AuthenticatedUserPage from '../AuthenticatedUserPage';
 
-export default class RecruitmentPage extends AuthenticatedUserPage {
+export default class RecruitmentPage {
+  readonly page: Page;
+
   readonly vacanciesLink: Locator;
 
   constructor(page: Page) {
-    super(page);
+    this.page = page;
 
     this.vacanciesLink = this.page
       .getByRole('link', { name: 'Vacancies' })

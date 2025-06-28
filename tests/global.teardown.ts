@@ -16,7 +16,7 @@ test.describe('Cleanup', () => {
 
     await pages.pimPage().search({ employeeName: config.automationPrefix });
 
-    // wait for attachments to load
+    // Wait for attachments to load
     await pages.loadingSpinner().waitForLoadToComplete();
 
     if (await pages.pimPage().noRecordsFoundLabel.isHidden()) {
@@ -30,7 +30,7 @@ test.describe('Cleanup', () => {
   test('Cleanup: Attachments', async ({ pages, page }) => {
     await pages.navigationMenu().myInfoLink.click();
 
-    // wait for attachments to load
+    // Wait for attachments to load
     await pages.loadingSpinner().waitForLoadToComplete();
 
     const rowsForRemoval = await page
@@ -53,7 +53,7 @@ test.describe('Cleanup', () => {
     await pages.navigationMenu().recruitmentLink.click();
     await pages.recruitmentPage().vacanciesLink.click();
 
-    // wait for vacancies to load before applying filter
+    // Wait for vacancies to load before applying filter
     await pages.loadingSpinner().waitForLoadToComplete();
 
     const rowsForRemoval = await page

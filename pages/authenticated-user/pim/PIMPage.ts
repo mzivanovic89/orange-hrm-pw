@@ -1,8 +1,9 @@
 import { type Page, type Locator } from '@playwright/test';
-import AuthenticatedUserPage from '../AuthenticatedUserPage';
 import { test } from 'base/test';
 
-export default class PIMPage extends AuthenticatedUserPage {
+export default class PIMPage {
+  readonly page: Page;
+
   readonly employeeNameInput: Locator;
   readonly searchButton: Locator;
 
@@ -13,7 +14,7 @@ export default class PIMPage extends AuthenticatedUserPage {
   readonly noRecordsFoundLabel: Locator;
 
   constructor(page: Page) {
-    super(page);
+    this.page = page;
 
     this.employeeNameInput = this.page
       .getByRole('textbox', { name: 'Type for hints...' })

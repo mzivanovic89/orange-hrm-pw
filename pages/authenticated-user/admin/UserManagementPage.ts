@@ -1,14 +1,15 @@
 import { type Locator, type Page } from '@playwright/test';
-import AuthenticatedUserPage from '../AuthenticatedUserPage';
 import { test } from 'base/test';
 
-export default class UserManagementPage extends AuthenticatedUserPage {
+export default class UserManagementPage {
+  readonly page: Page;
+
   readonly addUserButton: Locator;
 
   readonly usersTable: Locator;
 
   constructor(page: Page) {
-    super(page);
+    this.page = page;
 
     this.addUserButton = this.page
       .getByRole('button', { name: 'Add' })

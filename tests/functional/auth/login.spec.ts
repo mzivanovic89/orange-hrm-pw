@@ -3,7 +3,7 @@ import { test, expect } from 'base/test';
 import LoginPage from 'pages/auth/LoginPage';
 import DashboardPage from 'pages/authenticated-user/dashboard/DashboardPage';
 import { config } from 'project.config';
-import { Tag } from 'types/project/Tag';
+import { Tag } from 'types/enums/Tag';
 import {
   loginValidationScenarios,
   validLoginScenarios,

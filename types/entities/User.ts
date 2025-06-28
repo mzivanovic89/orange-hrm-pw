@@ -1,3 +1,6 @@
+import { UserRole } from 'types/enums/UserRole';
+import { UserStatus } from 'types/enums/UserStatus';
+
 export type User = {
   userRole: UserRole;
   employeeName: string;
@@ -5,13 +8,3 @@ export type User = {
   username: string;
   password: string;
 };
-
-export enum UserRole {
-  ADMIN = 'Admin',
-  ESS = 'ESS',
-}
-
-export enum UserStatus {
-  ENABLED = 'Enabled',
-  DISABLED = 'Disabled',
-}
